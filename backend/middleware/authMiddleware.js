@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const User = require('../model/userModel');
 
 
-const protect = asyncHandler( async (req , res , next)=>{
+const protect = asyncHandler( async (req, res , next)=>{
 
 
     let token;
@@ -20,7 +20,8 @@ try {
 
     //get user by id not including the password
 
-    req.user = await User.findById(decoded.id).select('-password');
+    req.user =(await User.findById(decoded.id).select('-password'));
+    
         next();
 
 
